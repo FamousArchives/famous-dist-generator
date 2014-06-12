@@ -1,0 +1,47 @@
+{
+  "name": "famous-commonjs",
+  "version": "0.0.0",
+  "description": "Convert famous/famous from RequireJS to CommonJS or standalone window.famous object",
+  "main": "./lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/FamousInternal/famous-commonjs.git"
+  },
+  "scripts": {
+    "test": "npm run-script lint; ./node_modules/.bin/tap test/*.js",
+    "watch": "./node_modules/.bin/nodemon --ignore node_modules/ -e js,json --exec 'npm test'",
+    "lint": "./node_modules/.bin/eslint **/*.js"
+  },
+  "author": "Andrew de Andrade <andrew@famo.us>",
+  "devDependencies": {
+    "eslint": "^0.6.2",
+    "nodemon": "^1.2.0",
+    "tap": "^0.4.11",
+    "tape": "^2.13.2",
+    "fetch-famous": "git+ssh://git@github.com:FamousInternal/fetch-famous.git#master"
+  },
+  "dependencies": {
+    "async": "^0.9.0",
+    "browserify": "^4.1.9",
+    "browserify-ftw": "^0.7.0",
+    "handlebars": "^2.0.0-alpha.4",
+    "minimist": "^0.1.0",
+    "mkdirp": "^0.5.0",
+    "xtend": "^3.0.0"
+  },
+  "bin": {
+    "famous-command": "bin/cmd.js"
+  },
+  "preferGlobal": "true",
+  "directories": {
+    "bin": "./bin",
+    "lib": "./lib",
+    "test": "./test"
+  },
+  "readme": "README.markdown",
+  "engines": {
+    "node": ">=0.10.28",
+    "npm": ">=1.4.10"
+  },
+  "license": "TBD"
+}
