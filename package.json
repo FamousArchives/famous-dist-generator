@@ -8,7 +8,7 @@
     "url": "git://github.com/FamousInternal/famous-commonjs.git"
   },
   "scripts": {
-    "test": "npm run-script lint; ./node_modules/.bin/tap test/*.js",
+    "test": "npm run-script lint; ./node_modules/.bin/tap --timeout 60 test/*.js",
     "watch": "./node_modules/.bin/nodemon --ignore node_modules/ -e js,json --exec 'npm test'",
     "lint": "./node_modules/.bin/eslint **/*.js"
   },
