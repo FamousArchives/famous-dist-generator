@@ -5,9 +5,31 @@ var os = require('os');
 var path = require('path');
 var fs = require('fs');
 
+var fetchFamous = lib.fetchFamous;
 var convert = lib.convert;
 var writeCommonJS = lib.writeCommonJS;
 var writeStandalone = lib.writeStandalone;
+
+function makeCheckoutTest(ref) {
+  return function (t) {
+    var currentFamousModules = require('./famous-modules-' + ref + '.json');
+    t.plan(2 + currentFamousModules.length);
+
+    fetchFamous(ref, function(err, famous) {
+
+      t.error(err, 'No error returned.');
+      t.equal(typeof famous, 'object', 'fetchFamous returned object');
+
+      currentFamousModules.forEach(function(key) {
+        t.equal(typeof famous[key], 'string', key + ' exists.');
+      });
+
+    });
+  };
+}
+
+test('valid semver', makeCheckoutTest('0.2.1'));
+test('valid sha1 hash', makeCheckoutTest('6b2ad41b3c024a298d778e6344383d846ae7fa98'));
 
 test('convert', function (t) {
   t.plan(2);
