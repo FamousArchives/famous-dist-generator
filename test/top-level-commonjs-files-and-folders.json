@@ -1,0 +1,15 @@
+[
+  "core",
+  "events",
+  "index.js",
+  "inputs",
+  "math",
+  "modifiers",
+  "package.json",
+  "physics",
+  "surfaces",
+  "transitions",
+  "utilities",
+  "views",
+  "widgets"
+]

@@ -4,6 +4,8 @@ var lib = require('../lib');
 var os = require('os');
 var path = require('path');
 var fs = require('fs');
+var temp = require('temp').track();
+var async = require('async');
 
 var fetchFamous = lib.fetchFamous;
 var convert = lib.convert;
@@ -41,22 +43,31 @@ test('convert', function (t) {
 });
 
 test('write CommonJS version', function (t) {
-  t.plan(1);
+  var expectedTopLevelFiles = require('./top-level-commonjs-files-and-folders.json');
+  t.plan(1 + expectedTopLevelFiles.length);
   var version = '0.2.1';
-  var tempDir = path.join(os.tmpdir(), ['test-famous-commonjs', version, Date.now()].join('-'));
+  var tempDir = temp.path({prefix: 'famous-' + version});
   writeCommonJS(version, tempDir, function(err) {
     t.error(err, 'No error returned');
+    async.each(expectedTopLevelFiles, function(file, done) {
+      var filePath = path.join(tempDir, file);
+      fs.exists(filePath, function(exists) {
+        t.ok(exists, 'Top level file exists: ' + file);
+        done();
+      });
+    }, temp.cleanupSync);
   });
 });
 
 test('write standalone global window.famous version', function (t) {
   t.plan(2);
   var version = '0.2.1';
-  var destination = path.join(os.tmpdir(), ['famous', version, Date.now() + '.js'].join('-'));
+  var destination = temp.path({prefix: 'famous-' + version, suffix: '.js'});
   writeStandalone(version, destination, function(err) {
     t.error(err, 'No error returned');
     fs.exists(destination, function(exists) {
       t.ok(exists, 'famous.js exists');
+      temp.cleanupSync();
     });
   });
 });

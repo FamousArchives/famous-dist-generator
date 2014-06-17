@@ -15,10 +15,11 @@
   "author": "Andrew de Andrade <andrew@famo.us>",
   "devDependencies": {
     "eslint": "^0.6.2",
+    "famous-git-cache": "git+ssh://git@github.com:Famous/famous-git-cache.git#master",
     "nodemon": "^1.2.0",
     "tap": "^0.4.11",
     "tape": "^2.13.2",
-    "famous-git-cache": "git+ssh://git@github.com:Famous/famous-git-cache.git#master"
+    "temp": "^0.8.0"
   },
   "dependencies": {
     "async": "^0.9.0",
