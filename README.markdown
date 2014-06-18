@@ -36,7 +36,13 @@ buildLib.writeStandalone(ref, out, minify, function(err) {
 Build a single JavaScript file that defines a `famous` property on `window`
 
 ``` 
-$ famous-command --standalone -ref 0.2.1 --minify --out ./famous-commonjs-0.2.1.js
+$ famous-command --standalone -ref 0.2.1 --minify --out ./famous-standalone-0.2.1.js
+```
+
+Build a single JavaScript file that apes the legacy single file RequireJS version
+
+``` 
+$ famous-command --requirejs -ref 0.2.1 --minify --out ./famous-requirejs-0.2.1.js
 ```
 
 Convert RequireJS-based Famous to CommonJS.

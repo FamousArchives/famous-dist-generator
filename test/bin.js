@@ -41,6 +41,22 @@ test('build standalone/global `window.famous` version', function (t) {
   });
 });
 
+test('build concatenated RequireJS version', function (t) {
+  t.plan(4);
+  var version = '0.2.1';
+  var outPath = temp.path({prefix: 'famous-', suffix: '.js'});
+  exec([binPath, '--requirejs', '--out', outPath, '--version', version].join(' '), function(err, stdout, stderr) {
+    t.error(err, 'No error returned.');
+    t.equal(stderr, '', 'stderr should be empty string');
+    var successMsg = 'Successfully built RequireJS famous for reference ' + version + '\n';
+    t.equal(stdout, successMsg, 'Printed success message.');
+    fs.exists(outPath, function(exists) {
+      t.ok(exists, 'famous.js exists at destination');
+      temp.cleanupSync();
+    });
+  });
+});
+
 test('build CommonJS version', function (t) {
   var expectedTopLevelFiles = require('./top-level-commonjs-files-and-folders.json');
   t.plan(3 + expectedTopLevelFiles.length);

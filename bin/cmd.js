@@ -6,6 +6,7 @@ var argv = require('minimist')(process.argv.slice(2));
 var lib = require('../lib');
 var writeCommonJS = lib.writeCommonJS;
 var writeStandalone = lib.writeStandalone;
+var writeRequireJS = lib.writeRequireJS;
 var path = require('path');
 
 function getValue(keys, defaultValue) {
@@ -54,6 +55,8 @@ if (argv.commonjs) {
   writeCommonJS(ref, out, makeCallback('CommonJS'));
 } else if (argv.standalone) {
   writeStandalone(ref, out, minify, makeCallback('standalone'));
+} else if (argv.requirejs) {
+  writeRequireJS(ref, out, minify, makeCallback('RequireJS'));
 } else {
   console.log('Must specify either --common for CommonJS or --standalone for window.famous.');
   process.exit(1);

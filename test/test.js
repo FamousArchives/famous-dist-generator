@@ -11,6 +11,7 @@ var fetchFamous = lib.fetchFamous;
 var convert = lib.convert;
 var writeCommonJS = lib.writeCommonJS;
 var writeStandalone = lib.writeStandalone;
+var writeRequireJS = lib.writeRequireJS;
 
 function makeCheckoutTest(ref) {
   return function (t) {
@@ -64,6 +65,19 @@ test('write standalone global window.famous version', function (t) {
   var version = '0.2.1';
   var destination = temp.path({prefix: 'famous-' + version, suffix: '.js'});
   writeStandalone(version, destination, function(err) {
+    t.error(err, 'No error returned');
+    fs.exists(destination, function(exists) {
+      t.ok(exists, 'famous.js exists');
+      temp.cleanupSync();
+    });
+  });
+});
+
+test('write RequireJS version', function(t) {
+  t.plan(2);
+  var version = '0.2.1';
+  var destination = temp.path({prefix: 'famous-' + version, suffix: '.js'});
+  writeRequireJS(version, destination, function(err) {
     t.error(err, 'No error returned');
     fs.exists(destination, function(exists) {
       t.ok(exists, 'famous.js exists');
