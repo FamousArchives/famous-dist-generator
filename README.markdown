@@ -22,7 +22,9 @@ buildLib.writeCommonJS(ref, out, function(err) {
     // do something here.
 });
 
-buildLib.writeStandalone(ref, out, function(err) {
+var minify = true;
+
+buildLib.writeStandalone(ref, out, minify, function(err) {
     if (err) { return console.error(err); }
     // do something here.
 });
@@ -34,7 +36,7 @@ buildLib.writeStandalone(ref, out, function(err) {
 Build a single JavaScript file that defines a `famous` property on `window`
 
 ``` 
-$ famous-command --standalone -ref 0.2.1 --out ./famous-commonjs-0.2.1.js
+$ famous-command --standalone -ref 0.2.1 --minify --out ./famous-commonjs-0.2.1.js
 ```
 
 Convert RequireJS-based Famous to CommonJS.
