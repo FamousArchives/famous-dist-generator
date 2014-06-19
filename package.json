@@ -15,7 +15,6 @@
   "author": "Andrew de Andrade <andrew@famo.us>",
   "devDependencies": {
     "eslint": "^0.6.2",
-    "famous-git-cache": "git+ssh://git@github.com:Famous/famous-git-cache.git#master",
     "nodemon": "^1.2.0",
     "tap": "^0.4.11",
     "tape": "^2.13.2",
@@ -26,6 +25,7 @@
     "browserify": "^4.1.9",
     "browserify-ftw": "^0.7.0",
     "commondir": "0.0.1",
+    "famous-git-cache": "git+ssh://git@github.com:Famous/famous-git-cache.git#master",
     "findit": "^1.2.0",
     "handlebars": "^2.0.0-alpha.4",
     "minimist": "^0.1.0",
