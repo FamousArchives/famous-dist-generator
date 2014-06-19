@@ -7,6 +7,7 @@ var lib = require('../lib');
 var writeCommonJS = lib.writeCommonJS;
 var writeStandalone = lib.writeStandalone;
 var writeRequireJS = lib.writeRequireJS;
+var writeFamousCSS = lib.writeFamousCSS;
 var path = require('path');
 
 function getValue(keys, defaultValue) {
@@ -57,6 +58,8 @@ if (argv.commonjs) {
   writeStandalone(ref, out, minify, makeCallback('standalone'));
 } else if (argv.requirejs) {
   writeRequireJS(ref, out, minify, makeCallback('RequireJS'));
+} else if (argv.css) {
+  writeFamousCSS(ref, out, minify, makeCallback('stylesheet for'));
 } else {
   console.log('Must specify either --common for CommonJS or --standalone for window.famous.');
   process.exit(1);

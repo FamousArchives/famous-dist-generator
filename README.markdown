@@ -1,5 +1,5 @@
-famous-commonjs
-===============
+famous-convert
+==============
 
 This module clones the famous/famous repo and converts it to a npm compatible 
 CommonJS format.
@@ -10,7 +10,7 @@ Usage
 ### API
 
 ```
-var buildLib = require('famous-commonjs');
+var buildLib = require('famous-convert');
 var path = require('path');
 
 var ref = '6b2ad41b3c024a298d778e6344383d846ae7fa98';
@@ -36,16 +36,23 @@ buildLib.writeStandalone(ref, out, minify, function(err) {
 Build a single JavaScript file that defines a `famous` property on `window`
 
 ``` 
-$ famous-command --standalone -ref 0.2.1 --minify --out ./famous-standalone-0.2.1.js
+$ famous-convert --standalone -ref 0.2.1 --minify --out ./famous-standalone-0.2.1.js
 ```
 
 Build a single JavaScript file that apes the legacy single file RequireJS version
 
 ``` 
-$ famous-command --requirejs -ref 0.2.1 --minify --out ./famous-requirejs-0.2.1.js
+$ famous-convert --requirejs -ref 0.2.1 --minify --out ./famous-requirejsg-0.2.1.js
 ```
 
 Convert RequireJS-based Famous to CommonJS.
+
 ```
-$ famous-command --commonjs -ref 0.2.1 --out ./famous-commonjs-0.2.1
+$ famous-convert --commonjs -ref 0.2.1 --out ./famous-commonjs-0.2.1
+```
+
+Get the famous.css file for a specific version
+
+```
+$ famous-convert --css -ref 0.2.1 --out ./famous-0.2.1.css
 ```

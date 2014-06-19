@@ -12,6 +12,7 @@ var convert = lib.convert;
 var writeCommonJS = lib.writeCommonJS;
 var writeStandalone = lib.writeStandalone;
 var writeRequireJS = lib.writeRequireJS;
+var writeFamousCSS = lib.writeFamousCSS;
 
 function makeCheckoutTest(ref) {
   return function (t) {
@@ -78,6 +79,19 @@ test('write RequireJS version', function(t) {
   var version = '0.2.1';
   var destination = temp.path({prefix: 'famous-' + version, suffix: '.js'});
   writeRequireJS(version, destination, function(err) {
+    t.error(err, 'No error returned');
+    fs.exists(destination, function(exists) {
+      t.ok(exists, 'famous.js exists');
+      temp.cleanupSync();
+    });
+  });
+});
+
+test('write famous.css', function(t) {
+  t.plan(2);
+  var version = '0.2.1';
+  var destination = temp.path({prefix: 'famous-' + version, suffix: '.css'});
+  writeFamousCSS(version, destination, function(err) {
     t.error(err, 'No error returned');
     fs.exists(destination, function(exists) {
       t.ok(exists, 'famous.js exists');
