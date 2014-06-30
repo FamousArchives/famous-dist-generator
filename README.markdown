@@ -56,3 +56,7 @@ Get the famous.css file for a specific version
 ```
 $ famous-convert --css -ref 0.2.1 --out ./famous-0.2.1.css
 ```
+
+If you want to use a different Github repo URL to make Famo.us from, just set 
+the `FAMOUS_GITHUB_REPO_URL` environment variable. The default value is 
+`'git@github.com:Famous/famous.git'`.

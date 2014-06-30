@@ -1,11 +1,11 @@
 {
   "name": "famous-convert",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Convert famous/famous from RequireJS to CommonJS or standalone window.famous object",
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/FamousInternal/famous-commonjs.git"
+    "url": "git://github.com/FamousInternal/famous-convert.git"
   },
   "scripts": {
     "test": "npm run-script lint; ./node_modules/.bin/tap --timeout 60 test/*.js",
