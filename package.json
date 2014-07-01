@@ -1,6 +1,6 @@
 {
   "name": "famous-convert",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Convert famous/famous from RequireJS to CommonJS or standalone window.famous object",
   "main": "./lib/index.js",
   "repository": {
