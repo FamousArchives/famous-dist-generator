@@ -98,7 +98,7 @@ test('write famous.css', function(t) {
   writeFamousCSS(version, destination, function(err) {
     t.error(err, 'No error returned');
     fs.exists(destination, function(exists) {
-      t.ok(exists, 'famous.js exists');
+      t.ok(exists, 'famous.css exists');
       temp.cleanupSync();
     });
   });
