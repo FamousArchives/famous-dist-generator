@@ -26,7 +26,7 @@
     "browserify-ftw": "^0.7.0",
     "clean-css": "^2.2.2",
     "commondir": "0.0.1",
-    "famous-git-cache": "git+ssh://git@github.com:Famous/famous-git-cache.git#master",
+    "famous-git-cache": "^0.1.1",
     "findit": "^1.2.0",
     "handlebars": "^2.0.0-alpha.4",
     "minimist": "^0.1.0",
