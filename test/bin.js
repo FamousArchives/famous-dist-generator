@@ -1,6 +1,6 @@
 'use strict';
 var test = require('tape');
-var spawn = require('child_process').spawn;
+// var spawn = require('child_process').spawn;
 var exec = require('child_process').exec;
 var path = require('path');
 var fs = require('fs');

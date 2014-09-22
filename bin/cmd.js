@@ -28,17 +28,17 @@ if (!out) {
   out = path.join(process.cwd(), 'famous-' + ref);
 }
 
-function build (type, builder, ref, out) {
-  builder(ref, out, function(err) {
-    if (err) {
-      console.error('Failed to build %s famous for reference %s', type, ref);
-      console.error(err);
-      return process.exit(1);
-    }
-    console.log('Successfully built %s famous for reference %s', type, ref);
-    process.exit(0);
-  });
-}
+// function build (type, builder, ref, out) {
+//   builder(ref, out, function(err) {
+//     if (err) {
+//       console.error('Failed to build %s famous for reference %s', type, ref);
+//       console.error(err);
+//       return process.exit(1);
+//     }
+//     console.log('Successfully built %s famous for reference %s', type, ref);
+//     process.exit(0);
+//   });
+// }
 
 function makeCallback(type) {
   return function(err) {

@@ -1,7 +1,7 @@
 'use strict';
 var test = require('tape');
 var lib = require('../lib');
-var os = require('os');
+// var os = require('os');
 var path = require('path');
 var fs = require('fs');
 var temp = require('temp').track();
