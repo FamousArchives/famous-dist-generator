@@ -1,11 +1,11 @@
 {
-  "name": "famous-convert",
+  "name": "famous-dist-generator",
   "version": "0.0.2",
-  "description": "Convert famous/famous from RequireJS to CommonJS or standalone window.famous object",
+  "description": "Build various dist versions of famous/famous. RequireJS, CommonJS, or standalone window.famous object",
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/FamousInternal/famous-convert.git"
+    "url": "git://github.com/FamousInternal/famous-dist-generator.git"
   },
   "scripts": {
     "test": "npm run-script lint; ./node_modules/.bin/tap --timeout 60 test/*.js",
@@ -36,7 +36,7 @@
     "xtend": "^3.0.0"
   },
   "bin": {
-    "famous-convert": "bin/cmd.js"
+    "famous-dist-generator": "bin/cmd.js"
   },
   "preferGlobal": "true",
   "directories": {
@@ -49,5 +49,5 @@
     "node": ">=0.10.28",
     "npm": ">=1.4.10"
   },
-  "license": "TBD"
+  "license": "MPLv2"
 }

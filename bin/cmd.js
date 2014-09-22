@@ -28,8 +28,27 @@ var ref = getValue(['ref', 'r', 'version', 'v', 'tag', 't', 'branch', 'b'], 'mas
 var out = getValue(['out', 'o'], undefined);
 var minify = getValue(['minify', 'm'], false);
 
+var buildType = '';
+
+if (argv.commonjs) {
+  buildType = 'commonjs';
+} else if (argv.standalone) {
+  buildType = 'global';
+} else if (argv.requirejs) {
+  buildType = 'requirejs';
+}
+
 if (!out) {
-  out = path.join(process.cwd(), 'famous-' + ref);
+  var filename = 'famous-';
+  if (buildType !== '' && buildType !== 'requirejs') { filename += [buildType, '-'].join(''); }
+  filename += ref;
+  if (!argv.commonjs && !argv.css) {
+    filename += '.js';
+  }
+  else if (argv.css) {
+    filename += '.css';
+  }
+  out = path.join(process.cwd(), filename);
 }
 
 // function build (type, builder, ref, out) {
@@ -45,7 +64,7 @@ if (!out) {
 // }
 
 function makeCallback(type) {
-  return function(err) {
+  return function (err) {
     if (err) {
       console.error('Failed to build %s famous for reference %s', type, ref);
       console.error(err);

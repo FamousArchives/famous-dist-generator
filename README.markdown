@@ -1,7 +1,7 @@
-famous-convert
+famous-dist-generator
 ==============
 
-This module clones the famous/famous repo and converts it to a npm compatible 
+This module clones the famous/famous repo and convert it to a npm compatible 
 CommonJS format.
 
 Usage
@@ -10,7 +10,7 @@ Usage
 ### API
 
 ```
-var buildLib = require('famous-convert');
+var buildLib = require('famous-dist-generator');
 var path = require('path');
 
 var ref = '6b2ad41b3c024a298d778e6344383d846ae7fa98';
@@ -36,25 +36,25 @@ buildLib.writeStandalone(ref, out, minify, function(err) {
 Build a single JavaScript file that defines a `famous` property on `window`
 
 ``` 
-$ famous-convert --standalone --ref 0.2.1 --minify --out ./famous-standalone-0.2.1.js
+$ famous-dist-generator --standalone --ref 0.2.1 --minify --out ./famous-standalone-0.2.1.js
 ```
 
 Build a single JavaScript file that apes the legacy single file RequireJS version
 
 ``` 
-$ famous-convert --requirejs --ref 0.2.1 --minify --out ./famous-requirejsg-0.2.1.js
+$ famous-dist-generator --requirejs --ref 0.2.1 --minify --out ./famous-requirejs-0.2.1.js
 ```
 
-Convert RequireJS-based Famous to CommonJS.
+dist-generator RequireJS-based Famous to CommonJS.
 
 ```
-$ famous-convert --commonjs --ref 0.2.1 --out ./famous-commonjs-0.2.1
+$ famous-dist-generator --commonjs --ref 0.2.1 --out ./famous-commonjs-0.2.1
 ```
 
 Get the famous.css file for a specific version
 
 ```
-$ famous-convert --css --ref 0.2.1 --out ./famous-0.2.1.css
+$ famous-dist-generator --css --ref 0.2.1 --out ./famous-0.2.1.css
 ```
 
 If you want to use a different Github repo URL to make Famo.us from, just set 
