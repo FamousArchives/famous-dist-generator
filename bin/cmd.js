@@ -84,6 +84,6 @@ if (argv.commonjs) {
 } else if (argv.css) {
   writeFamousCSS(ref, out, minify, makeCallback('stylesheet for'));
 } else {
-  console.log('Must specify either --common for CommonJS or --standalone for window.famous.');
+  console.log('Must specify either --commonjs for CommonJS or --standalone for window.famous.');
   process.exit(1);
 }
