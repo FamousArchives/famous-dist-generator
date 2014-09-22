@@ -14,11 +14,11 @@
   },
   "author": "Andrew de Andrade <andrew@famo.us>",
   "devDependencies": {
-    "eslint": "^0.6.2",
+    "eslint": "^0.8.2",
     "nodemon": "^1.2.0",
-    "tap": "^0.4.11",
-    "tape": "^2.13.2",
-    "temp": "^0.8.0"
+    "tap": "^0.4.12",
+    "tape": "^3.0.0",
+    "temp": "^0.8.1"
   },
   "dependencies": {
     "async": "^0.9.0",
