@@ -5,7 +5,7 @@
   "main": "./lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git://github.com/FamousInternal/famous-dist-generator.git"
+    "url": "git://github.com/FamousTools/famous-dist-generator.git"
   },
   "scripts": {
     "test": "npm run-script lint && ./node_modules/.bin/tap --timeout 120 test/*.js",
