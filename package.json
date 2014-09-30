@@ -44,7 +44,6 @@
     "lib": "./lib",
     "test": "./test"
   },
-  "readme": "README.markdown",
   "engines": {
     "node": ">=0.10.28",
     "npm": ">=1.4.10"
