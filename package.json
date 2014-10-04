@@ -22,11 +22,11 @@
   },
   "dependencies": {
     "async": "^0.9.0",
-    "browserify": "^5.12.0",
+    "browserify": "^6.0.2",
     "browserify-ftw": "^0.7.1",
     "clean-css": "^2.2.2",
     "commondir": "0.0.1",
-    "famous-git-cache": "^0.1.5",
+    "famous-git-cache": "^0.1.6",
     "findit": "^2.0.0",
     "handlebars": "^2.0.0-alpha.4",
     "minimist": "^1.1.0",
