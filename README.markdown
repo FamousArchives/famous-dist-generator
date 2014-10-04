@@ -1,7 +1,7 @@
 famous-dist-generator
 ==============
 
-[![Build Status](https://travis-ci.org/Famous/famous-dist-generator.svg?branch=master)](https://travis-ci.org/Famous/famous-dist-generator) [![Dependency Status](https://david-dm.org/Famous/famous-dist-generator.svg)](https://david-dm.org/Famous/famous-dist-generator) [![devDependency Status](https://david-dm.org/Famous/famous-dist-generator/dev-status.svg)](https://david-dm.org/Famous/famous-dist-generator#info=devDependencies)
+[![Build Status](https://travis-ci.org/FamousTools/famous-dist-generator.svg?branch=master)](https://travis-ci.org/FamousTools/famous-dist-generator) [![Dependency Status](https://david-dm.org/FamousTools/famous-dist-generator.svg)](https://david-dm.org/FamousTools/famous-dist-generator) [![devDependency Status](https://david-dm.org/FamousTools/famous-dist-generator/dev-status.svg)](https://david-dm.org/FamousTools/famous-dist-generator#info=devDependencies)
 
 This module clones the famous/famous repo and convert it to a npm compatible 
 CommonJS format.
