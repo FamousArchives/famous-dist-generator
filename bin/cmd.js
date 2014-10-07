@@ -6,13 +6,15 @@
 /*eslint no-process-exit:0*/
 'use strict';
 process.title = 'famous';
+var path = require('path');
+var exec = require('child_process').exec;
+var async = require('async');
 var argv = require('minimist')(process.argv.slice(2));
 var lib = require('../lib');
 var writeCommonJS = lib.writeCommonJS;
 var writeStandalone = lib.writeStandalone;
 var writeRequireJS = lib.writeRequireJS;
 var writeFamousCSS = lib.writeFamousCSS;
-var path = require('path');
 
 function getValue(keys, defaultValue) {
   var value;
@@ -27,6 +29,7 @@ function getValue(keys, defaultValue) {
 var ref = getValue(['ref', 'r', 'version', 'v', 'tag', 't', 'branch', 'b'], 'master');
 var out = getValue(['out', 'o'], undefined);
 var minify = getValue(['minify', 'm'], false);
+var local = getValue(['local', 'l'], false);
 
 var buildType = '';
 
@@ -49,6 +52,19 @@ if (!out) {
     filename += '.css';
   }
   out = path.join(process.cwd(), filename);
+}
+
+function localRef(cb) {
+  if (!local) { return cb(null); }
+  exec('git rev-parse --abbrev-ref HEAD', {
+    cwd: process.env.PWD
+  }, function (err, stdout, stderr) {
+    if (err) { return cb(err); }
+    if (stderr !== '') { return cb(stderr); }
+    ref = stdout.replace(/\n$/, '');
+    process.env.FAMOUS_GITHUB_REPO_URL = process.env.PWD;
+    return cb(null);
+  });
 }
 
 // function build (type, builder, ref, out) {
@@ -75,15 +91,20 @@ function makeCallback(type) {
   };
 }
 
-if (argv.commonjs) {
-  writeCommonJS(ref, out, makeCallback('CommonJS'));
-} else if (argv.standalone) {
-  writeStandalone(ref, out, minify, makeCallback('standalone'));
-} else if (argv.requirejs) {
-  writeRequireJS(ref, out, minify, makeCallback('RequireJS'));
-} else if (argv.css) {
-  writeFamousCSS(ref, out, minify, makeCallback('stylesheet for'));
-} else {
-  console.log('Must specify either --commonjs for CommonJS or --standalone for window.famous.');
-  process.exit(1);
-}
+async.waterfall([
+  localRef,
+  function () {
+    if (argv.commonjs) {
+      writeCommonJS(ref, out, makeCallback('CommonJS'));
+    } else if (argv.standalone) {
+      writeStandalone(ref, out, minify, makeCallback('standalone'));
+    } else if (argv.requirejs) {
+      writeRequireJS(ref, out, minify, makeCallback('RequireJS'));
+    } else if (argv.css) {
+      writeFamousCSS(ref, out, minify, makeCallback('stylesheet for'));
+    } else {
+      console.log('Must specify either --commonjs for CommonJS or --standalone for window.famous.');
+      process.exit(1);
+    }
+  }
+]);
