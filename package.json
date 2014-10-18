@@ -26,6 +26,7 @@
     "browserify-ftw": "^0.7.1",
     "clean-css": "^2.2.2",
     "commondir": "0.0.1",
+    "derequire": "^1.2.0",
     "famous-git-cache": "^0.1.6",
     "findit": "^2.0.0",
     "handlebars": "^2.0.0-alpha.4",
