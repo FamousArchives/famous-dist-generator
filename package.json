@@ -14,7 +14,7 @@
   },
   "author": "Andrew de Andrade <andrew@famo.us>",
   "devDependencies": {
-    "eslint": "^0.8.2",
+    "eslint": "^0.9.2",
     "nodemon": "^1.2.0",
     "tap": "^0.4.13",
     "tape": "^3.0.0",
