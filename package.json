@@ -10,7 +10,8 @@
   "scripts": {
     "test": "npm run-script lint && ./node_modules/.bin/tap --timeout 120 test/*.js",
     "watch": "./node_modules/.bin/nodemon --ignore node_modules/ -e js,json --exec 'npm test'",
-    "lint": "./node_modules/.bin/eslint **/*.js"
+    "lint": "./node_modules/.bin/eslint **/*.js",
+    "prepublish": "npm ls && npm test"
   },
   "author": "Andrew de Andrade <andrew@famo.us>",
   "devDependencies": {
