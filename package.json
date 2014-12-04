@@ -1,6 +1,6 @@
 {
   "name": "famous-dist-generator",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Build various dist versions of famous/famous. RequireJS, CommonJS, or standalone window.famous object",
   "main": "./lib/index.js",
   "repository": {
