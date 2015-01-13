@@ -15,7 +15,7 @@
   },
   "author": "Andrew de Andrade <andrew@famo.us>",
   "devDependencies": {
-    "eslint": "^0.10.0",
+    "eslint": "^0.11.0",
     "nodemon": "^1.2.0",
     "tap": "^0.4.13",
     "tape": "^3.0.0",
@@ -23,9 +23,9 @@
   },
   "dependencies": {
     "async": "^0.9.0",
-    "browserify": "^7.0.0",
+    "browserify": "^8.1.0",
     "browserify-ftw": "^0.7.1",
-    "clean-css": "^2.2.2",
+    "clean-css": "^3.0.4",
     "commondir": "0.0.1",
     "derequire": "^1.2.0",
     "famous-git-cache": "^0.1.6",
