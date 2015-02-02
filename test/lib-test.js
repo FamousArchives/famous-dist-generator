@@ -3,5 +3,10 @@
  * file, You can obtain one at http://mozilla.org/MPL/2.0/. */
 
 'use strict';
+var test = require('tape');
+// var lib = require('../lib');
 
-module.exports = 'true';
+test('this should pass', function(t) {
+  t.ok(true, 'shim');
+  t.end();
+});
