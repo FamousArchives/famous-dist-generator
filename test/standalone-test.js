@@ -14,7 +14,7 @@ var virtualDom = require('./helpers/virtualDom');
 var runFamous = require('./helpers/runFamous');
 
 var tmpdir = os.tmpdir();
-var outDir = path.join(tmpdir, 'famous-dist-generator', 'standalone');
+var outDir = path.join(tmpdir, 'famous-dist-generator', 'standalone-' + Date.now());
 var outFile = path.join(outDir, 'famous-standalone.js');
 
 var standalone = require('../lib/standalone');

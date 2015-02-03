@@ -14,7 +14,7 @@ var virtualDom = require('./helpers/virtualDom');
 var runFamous = require('./helpers/runFamous');
 
 var tmpdir = os.tmpdir();
-var outDir = path.join(tmpdir, 'famous-dist-generator', 'common');
+var outDir = path.join(tmpdir, 'famous-dist-generator', 'common-' + Date.now());
 
 var common = require('../lib/common');
 
