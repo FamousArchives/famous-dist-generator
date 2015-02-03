@@ -57,6 +57,11 @@ test('standalone: can be required', function (t) {
   runFamous(famous, t);
 });
 
+test('standalone: minified version can be required', function (t) {
+  var famous = global.famous = require(outFileMin);
+  runFamous(famous, t);
+});
+
 test('standalone: teardown', function (t) {
   t.plan(1);
   rimraf(outDir, function (err) {
