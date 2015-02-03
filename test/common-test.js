@@ -5,6 +5,7 @@
 
 var path = require('path');
 var os = require('os');
+var fs = require('fs');
 
 var test = require('tape');
 var mkdirp = require('mkdirp');
@@ -20,6 +21,7 @@ var common = require('../lib/common');
 
 var famousSRC = path.join(__dirname, '..', 'node_modules', 'famous', 'src');
 
+
 test('common: setup temp directory', function (t) {
   t.plan(1);
   mkdirp(outDir, function (err) {
@@ -31,6 +33,23 @@ test('common: build', function (t) {
   t.plan(1);
   common(famousSRC, outDir, function (err) {
     t.error(err, 'the process should complete without an error');
+  });
+});
+
+test('common: extras', function (t) {
+  var extras = [
+    'AUTHORS',
+    'CHANGELOG.md',
+    'CONTRIBUTING.md',
+    'LICENSE',
+    'package.json',
+    'README.md'
+  ];
+  t.plan(extras.length);
+  extras.map(function (file) {
+    fs.exists(path.join(outDir, file), function (exists) {
+      t.ok(exists, file + ' exists');
+    });
   });
 });
 
