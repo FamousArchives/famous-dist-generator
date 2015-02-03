@@ -10,8 +10,8 @@ var test = require('tape');
 var mkdirp = require('mkdirp');
 var rimraf = require('rimraf');
 
-// var virtualDom = require('./helpers/virtualDom');
-// var runFamous = require('./helpers/runFamous');
+var virtualDom = require('./helpers/virtualDom');
+var runFamous = require('./helpers/runFamous');
 
 var tmpdir = os.tmpdir();
 var outDir = path.join(tmpdir, 'famous-dist-generator', 'common');
@@ -34,14 +34,14 @@ test('common: build', function (t) {
   });
 });
 
-// test('common: setup virtualdom', function (t) {
-//   virtualDom(t);
-// });
-//
-// test('common: can be required', function (t) {
-//   var famous = global.famous = require(outDir);
-//   runFamous(famous, t);
-// });
+test('common: setup virtualdom', function (t) {
+  virtualDom(t);
+});
+
+test('common: can be required', function (t) {
+  var famous = global.famous = require(outDir);
+  runFamous(famous, t);
+});
 
 test('common: teardown', function (t) {
   t.plan(1);
