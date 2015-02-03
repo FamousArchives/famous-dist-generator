@@ -5,6 +5,7 @@
 
 var path = require('path');
 var os = require('os');
+var fs = require('fs');
 
 var test = require('tape');
 var mkdirp = require('mkdirp');
@@ -15,7 +16,8 @@ var runFamous = require('./helpers/runFamous');
 
 var tmpdir = os.tmpdir();
 var outDir = path.join(tmpdir, 'famous-dist-generator', 'standalone-' + Date.now());
-var outFile = path.join(outDir, 'famous-standalone.js');
+var outFile = path.join(outDir, 'famous-global.js');
+var outFileMin = path.join(outDir, 'famous-global.min.js');
 
 var standalone = require('../lib/standalone');
 
@@ -29,9 +31,20 @@ test('standalone: setup temp directory', function (t) {
 });
 
 test('standalone: build', function (t) {
-  t.plan(1);
+  t.plan(2);
   standalone(famousSRC, outFile, function (err) {
     t.error(err, 'the process should complete without an error');
+    t.ok(fs.existsSync(outFile), 'famous-global.js should exist');
+  });
+});
+
+test('standalone: build minified', function (t) {
+  t.plan(2);
+  standalone(famousSRC, outFileMin, true, function (err) {
+    var big = fs.readFileSync(outFile, 'utf8');
+    var small = fs.readFileSync(outFileMin, 'utf8');
+    t.error(err, 'the process should complete without an error');
+    t.ok(small.length < big.length, 'the minified version should be smaller');
   });
 });
 
