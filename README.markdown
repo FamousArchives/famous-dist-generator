@@ -3,8 +3,7 @@ famous-dist-generator
 
 [![Build Status](https://travis-ci.org/FamousTools/famous-dist-generator.svg?branch=master)](https://travis-ci.org/FamousTools/famous-dist-generator) [![Dependency Status](https://david-dm.org/FamousTools/famous-dist-generator.svg)](https://david-dm.org/FamousTools/famous-dist-generator) [![devDependency Status](https://david-dm.org/FamousTools/famous-dist-generator/dev-status.svg)](https://david-dm.org/FamousTools/famous-dist-generator#info=devDependencies)
 
-This module clones the famous/famous repo and convert it to a npm compatible 
-CommonJS format.
+This module allows you to convert Famo.us to the various ways it is consumed in production. It is generic enough that it should be able to work for any project that is architected in a similar
 
 Usage
 -----
@@ -12,53 +11,47 @@ Usage
 ### API
 
 ```
-var buildLib = require('famous-dist-generator');
+var distGenerator = require('famous-dist-generator');
 var path = require('path');
 
-var ref = '6b2ad41b3c024a298d778e6344383d846ae7fa98';
-var out = path.join(process.cwd(), 'famous-' + ref);
-
-
-buildLib.writeCommonJS(ref, out, function(err) {
-    if (err) { return console.error(err); }
-    // do something here.
+var src = path.join(path-to-famous, 'src');
+var dest = path.join(process.cwd(), 'famous.js');
+distGenerator.standalone(src, dest, function (err) {
+    if (err) { return console.error(new Error(err)); }
+    //do something
 });
 
 var minify = true;
 
-buildLib.writeStandalone(ref, out, minify, function(err) {
-    if (err) { return console.error(err); }
-    // do something here.
+distGenerator.standalone(src, dest, minify, function (err) {
+    if (err) { return console.error(new Error(err)); }
+    //do something
 });
 
 ```
 
 ### CLI
 
-Build a single JavaScript file that defines a `famous` property on `window`
+Build a single JavaScript file that supports AMD, commonJS, and a global object version of famous
 
 ``` 
-$ famous-dist-generator --standalone --ref 0.2.1 --minify --out ./famous-standalone-0.2.1.js
+$ famous-dist-generator path-to-src path-to-output/famous-global.js
 ```
 
-Build a single JavaScript file that apes the legacy single file RequireJS version
+Build a single JavaScript file utilizing the AMD api supported by RequireJS
 
 ``` 
-$ famous-dist-generator --requirejs --ref 0.2.1 --minify --out ./famous-requirejs-0.2.1.js
+$ famous-dist-generator --amd path-to-src path-to-output/famous.js
 ```
 
-dist-generator RequireJS-based Famous to CommonJS.
+Convert the entire src directory from AMD to common (output is a folder that is ready to publish to npm)
 
 ```
-$ famous-dist-generator --commonjs --ref 0.2.1 --out ./famous-commonjs-0.2.1
+$ famous-dist-generator --common path-to-src path-to-output/
 ```
 
-Get the famous.css file for a specific version
+Copy famous.css from the src folder to your output folder
 
 ```
-$ famous-dist-generator --css --ref 0.2.1 --out ./famous-0.2.1.css
+$ famous-dist-generator --css path-to-src path-to-output
 ```
-
-If you want to use a different Github repo URL to make Famo.us from, just set 
-the `FAMOUS_GITHUB_REPO_URL` environment variable. The default value is 
-`'git@github.com:Famous/famous.git'`.
