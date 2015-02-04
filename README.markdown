@@ -41,17 +41,17 @@ $ famous-dist-generator path-to-src path-to-output/famous-global.js
 Build a single JavaScript file utilizing the AMD api supported by RequireJS
 
 ``` 
-$ famous-dist-generator --amd path-to-src path-to-output/famous.js
+$ famous-dist-generator path-to-src path-to-output/famous.js --amd
 ```
 
 Convert the entire src directory from AMD to common (output is a folder that is ready to publish to npm)
 
 ```
-$ famous-dist-generator --common path-to-src path-to-output/
+$ famous-dist-generator path-to-src path-to-output/ --common
 ```
 
 Copy famous.css from the src folder to your output folder
 
 ```
-$ famous-dist-generator --css path-to-src path-to-output
+$ famous-dist-generator path-to-src path-to-output --css
 ```
