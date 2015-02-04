@@ -21,6 +21,15 @@ test('bin: setup temp directory', function (t) {
   });
 });
 
+test('bin: incorrect input', function (t) {
+  t.plan(3);
+  exec([binPath].join(' '), function (err, stdout, stderr) {
+    t.deepEquals(err, { code: 1, killed: false, signal: null }, 'The process should exit with code 1');
+    t.equal(stderr, 'error: please provide both a src and a destination\n', 'Correct error message should be printed');
+    t.equal(stdout, '', 'Nothing should be logged.');
+  });
+});
+
 test('bin: build standalone/global', function (t) {
   t.plan(3);
   var dest = path.join(outDir, 'famous-standalone.js');
