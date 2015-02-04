@@ -1,4 +1,7 @@
 language: node_js
+before_install:
+  - currentfolder=${PWD##*/}
+  - if [ "$currentfolder" != 'famous-dist-generator' ]; then cd .. && eval "mv $currentfolder famous-dist-generator" && cd core; fi
 node_js:
   - '0.10'
 
