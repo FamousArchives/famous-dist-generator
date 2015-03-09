@@ -29,7 +29,7 @@
     "browserify": "^9.0.3",
     "common-ground": "^1.1.0",
     "deamdify": "^0.1.1",
-    "derequire": "^1.2.1",
+    "derequire": "^2.0.0",
     "findit": "^2.0.0",
     "index-finger": "^1.0.1",
     "minimist": "^1.1.0",
